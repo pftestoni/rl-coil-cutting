@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2025-10-27T00:00:00Z",
+  "keep": [
+    "src/",
+    "train.py",
+    "scripts/",
+    "tools/generate_patterns.py",
+    "tools/gen_patterns.py",
+    "tools/validate_patterns.py",
+    "catalogs/catalog_20.json",
+    "catalogs/catalog_60.json",
+    "configs/default.yaml",
+    "requirements.txt",
+    "tests/",
+    "patterns/patterns_20.csv",
+    "patterns/patterns_60.csv",
+    ".vscode/",
+    ".gitignore",
+    "reports/REPORTS.md",
+    "reports/figs/",
+    "reports/train/",
+    "reports/tune-sessions/",
+    "csp_ctl_logs_run.csv"
+  ],
+  "referenced": [
+    {
+      "path": "patterns/patterns_20.csv",
+      "by": [
+        "src/csp_rl/envs/ctl_env20.py",
+        "src/csp_rl/agents/milp_agent.py"
+      ]
+    },
+    {
+      "path": "patterns/patterns_60.csv",
+      "by": [
+        "src/csp_rl/envs/ctl_env60.py",
+        "src/csp_rl/agents/milp_agent.py"
+      ]
+    },
+    {
+      "path": "reports/train/episode_rl_details.csv",
+      "by": [
+        "scripts/refresh_figs.py"
+      ]
+    },
+    {
+      "path": "reports/tune-sessions/<session>/candidate-XX/<mode>/episode_rl_details.csv",
+      "by": [
+        "scripts/analyze_tune.py"
+      ]
+    }
+  ],
+  "deleteCandidates": [
+    {
+      "glob": "**/__pycache__/",
+      "reason": "Python bytecode cache",
+      "action": "delete"
+    },
+    {
+      "path": ".pytest_cache/",
+      "reason": "pytest cache",
+      "action": "delete"
+    },
+    {
+      "path": "reports/patterns_pipe(AutoRecovered).csv",
+      "reason": "Autosave/recovery file",
+      "action": "delete"
+    },
+    {
+      "path": "reports/runs/",
+      "reason": "Empty container; prefer top-level runs/",
+      "action": "delete-if-empty"
+    }
+  ],
+  "archiveCandidates": [
+    {
+      "glob": "patterns/patterns_*_trim*.csv",
+      "reason": "Legacy exhaustive enumerations not referenced by code",
+      "archiveTo": "_archive/patterns/"
+    },
+    {
+      "glob": "runs/train/*",
+      "reason": "Historical runs; apply retention policy (e.g., keep last N or last 7 days)",
+      "archiveTo": "_archive/runs/train/"
+    }
+  ],
+  "checkManually": [
+    {
+      "path": "reports/patterns.csv",
+      "reason": "Not referenced in code; confirm external usage"
+    },
+    {
+      "path": "reports/patterns_pipe.csv",
+      "reason": "Export artifact; confirm downstream consumer"
+    },
+    {
+      "path": "reports/deploy/",
+      "reason": "Packaging for deploy? Confirm contents and usage"
+    },
+    {
+      "path": "diag_env_test.py",
+      "reason": "Dev diagnostics; consider moving under scripts/dev/"
+    },
+    {
+      "path": "diag_inspect.py",
+      "reason": "Dev diagnostics; consider moving under scripts/dev/"
+    }
+  ]
+}
