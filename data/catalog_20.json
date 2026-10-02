@@ -1,0 +1,22 @@
+[
+  {"sku": "L001", "len_mm": 52},
+  {"sku": "L002", "len_mm": 101},
+  {"sku": "L003", "len_mm": 147},
+  {"sku": "L004", "len_mm": 202},
+  {"sku": "L005", "len_mm": 247},
+  {"sku": "L006", "len_mm": 297},
+  {"sku": "L007", "len_mm": 351},
+  {"sku": "L008", "len_mm": 397},
+  {"sku": "L009", "len_mm": 450},
+  {"sku": "L010", "len_mm": 500},
+  {"sku": "L011", "len_mm": 550},
+  {"sku": "L012", "len_mm": 602},
+  {"sku": "L013", "len_mm": 653},
+  {"sku": "L014", "len_mm": 700},
+  {"sku": "L015", "len_mm": 751},
+  {"sku": "L016", "len_mm": 799},
+  {"sku": "L017", "len_mm": 847},
+  {"sku": "L018", "len_mm": 900},
+  {"sku": "L019", "len_mm": 951},
+  {"sku": "L020", "len_mm": 998}
+]

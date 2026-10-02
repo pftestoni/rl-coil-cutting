@@ -1,0 +1,60 @@
+env:
+  horizon_days: 300
+  coil_width_mm: 1200
+  capacity_sheets_per_day: 50
+  max_blocks_per_day: 8
+  action_qty_max: 12
+  reward_scale: 3000.0
+  kerf_mm: 0
+  use_all_patterns: true
+  inventory_cap_units_per_sku: 40
+  inventory_penalty_per_mm: 1.5
+  auto_scrap_excess: true
+
+costs:
+  inventory_cost_per_mm: 3
+  scrap_cost_per_mm: 35
+  lost_sale_cost_per_mm: 700
+
+milp:
+  cbc_time_limit_sec: 30
+  cbc_threads: null
+  cbc_msg: false
+
+random:
+  seed_global: 456
+  seed_demands: 5151
+  seed_groups: 888
+
+runtime:
+  cleanup_on_interrupt: true
+  n_envs_by_env:
+    medio: 6
+  disable_milp: false
+
+ppo:
+  gamma: 0.995
+  learning_rate: 0.0004
+  n_steps: 8192
+  batch_size: 4096
+  n_epochs: 10
+  clip_range: 0.25
+  ent_coef: 0.05
+
+paths:
+  catalog_5: data/catalog_5.json
+  catalog_20: data/catalog_20.json
+  patterns_5: data/patterns_5.csv
+  patterns_20: data/patterns_20.csv
+
+demand:
+  mode: legacy
+  model: negbin
+  group_probs: [0.25, 0.5, 0.25]
+  mean_units_by_group: [0.2, 0.6, 1.2]
+  nb_dispersion_k: 1.2
+  noise_sigma_frac: 0.15
+  cap_fraction_of_capacity_mm: 0.0
+  target_utilization: 0.725
+  tolerance: 0.05
+  days_per_week: 7

@@ -1,5 +1,4 @@
-﻿.venv/
+.venv/
 __pycache__/
 *.pyc
-reports/runs/
-reports/figs/
+reports/
