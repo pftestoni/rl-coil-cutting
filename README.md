@@ -1,5 +1,7 @@
 # Reinforcement learning vs MILP for dynamic steel coil cutting
 
+[![tests](https://github.com/pftestoni/rl-coil-cutting/actions/workflows/tests.yml/badge.svg)](https://github.com/pftestoni/rl-coil-cutting/actions/workflows/tests.yml)
+
 B.Sc. thesis in Mechanical Engineering, concentration in Production Engineering,
 Federal University of Santa Catarina (UFSC), defended in December 2025.
 Advisor: Prof. Lynceo Falavigna Braghirolli.
@@ -40,11 +42,13 @@ average daily cost by **73.8%** and lost sales by **98.5%** compared with the MI
 at a similar inventory level. The day-by-day MILP has no view of the days ahead;
 the agent learned to build safety stock before demand shows up.
 
+![Average daily cost and lost sales, MILP vs PPO](docs/figures/summary_en.png)
+
 ![Average cumulative cost per day](docs/figures/cumulative_cost.png)
 
 ![Total lost sales](docs/figures/lost_sales.png)
 
-Charts are labeled in Portuguese, as in the thesis. All charts are in
+The two charts above are labeled in Portuguese, as in the thesis. All charts are in
 [docs/figures](docs/figures).
 
 ## Repository layout
@@ -59,6 +63,8 @@ configs/              experiment settings (costs, capacity, PPO hyperparameters)
 data/                 SKU catalogs and cutting pattern catalogs (5 and 20 SKUs)
 results/              summary of the runs reported in the thesis
 docs/                 thesis (PDF, Portuguese) and figures
+tests/                checks for the simulator, demand generator and MILP (pytest)
+scripts/              summary chart in English (plot_summary.py)
 ```
 
 ## How to run
@@ -70,6 +76,23 @@ python train.py --env medio --mode train --timesteps 200000 --eval-milp --make-p
 
 `--env pequeno` runs the 5-SKU scenario and `--env medio` the 20-SKU scenario.
 Outputs (models, CSVs and charts) are written to `reports/`. Tested with Python 3.11.
+
+## Tests
+
+```
+pip install pytest
+python -m pytest tests -q
+```
+
+The tests check that every cutting pattern fits in the coil, that demand is reproducible from its seeds,
+that the simulator conserves units (sales + lost sales = demand) with non-negative costs, and that the
+daily MILP serves the full demand when capacity allows. They run on every push (GitHub Actions).
+
+## How it was built
+
+I designed the problem, the experiments and the analysis, and wrote the code working with AI coding agents.
+That is how I work: I frame the engineering problem, direct the agents, and verify the results with tests
+and the measured outcomes reported above.
 
 ## Thesis
 
